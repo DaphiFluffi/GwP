@@ -2,10 +2,11 @@ CC = c++ #Compiler
 
 CFLAGS = -Wall #Optionen
 
-all: aufgabe10 #Target: all
+all: aufgabe10 aufgabe11 #Target: all
+     
 
-#aufgabe07: aufgabe07.cpp #Target: aufgabe07
-#	$(CC) $(CFLAGS) -o aufgabe07 aufgabe07.cpp
+aufgabe11: aufgabe11.cpp #Target: aufgabe11
+	$(CC) $(CFLAGS) -o aufgabe11 aufgabe11.cpp
 	
 aufgabe10: aufgabe10.o swap.o #Target: aufgabe08
 	$(CC) -o aufgabe10 aufgabe10.o swap.o
@@ -17,7 +18,7 @@ swap.o: swap.cpp  #Target:swap.o
 	$(CC) $(CFLAGS) -c swap.cpp
 
 clean: #Target: clean
-	#rm aufgabe07
+	rm aufgabe11
 	rm aufgabe10 
 	rm *.o
 
