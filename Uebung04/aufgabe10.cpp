@@ -4,11 +4,14 @@
 
 using namespace std;
 
-int main (){
-	int a = 1;
-	int x =2;
+int main ()
+{
+	int a,x;
+	cout << "1.Zahl: ";
+	cin >> a;
+	cout << "2.Zahl: ";
+	cin >> x;
 	int& b=a;
 	int& c=x;
 	cout << swap_ref(b,c);
-	cout << "blubb";	
 }
