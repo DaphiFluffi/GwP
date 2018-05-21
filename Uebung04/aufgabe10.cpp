@@ -13,5 +13,18 @@ int main ()
 	cin >> x;
 	int& b=a;
 	int& c=x;
-	cout << swap_ref(b,c);
+	//cout << "b: " << b << " c: " << c << endl;
+	int* ptr_1 = &b;
+	int* ptr_2 = &c;
+	cout << "Adresse ptr_1 vorher: " << ptr_1 << endl;
+	cout << "Wert ptr_1 vorher: " << (*ptr_1) << endl;	
+	cout << "Adresse ptr_2 vorher: " << ptr_2 << endl;
+	cout << "Wert ptr_2 vorher: " << (*ptr_2) << endl;
+
+	cout << swap_ptr(ptr_1,ptr_2) << endl;	
+	cout << "Adresse ptr_1 danach: " << ptr_1 << endl;
+	cout << "Wert ptr_1 danach: " << *ptr_1 << endl;
+	cout << "Adresse ptr_2 danach: " << ptr_2 << endl;
+	cout << "Wert ptr_2 danach: " << *ptr_2 << endl;
+	/*cout << swap_ref(b,c) << endl;*/
 }
