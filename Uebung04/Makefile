@@ -7,7 +7,7 @@ all: aufgabe10 aufgabe11 #Target: all
 aufgabe11: aufgabe11.cpp #Target: aufgabe11
 	$(CC) $(CFLAGS) -o aufgabe11 aufgabe11.cpp
 	
-aufgabe10: aufgabe10.o swap.o #Target: aufgabe08
+aufgabe10: aufgabe10.o swap.o #Target: aufgabe10
 	$(CC) -o aufgabe10 aufgabe10.o swap.o
 	
 aufgabe10.o: aufgabe10.cpp swap.hpp #Target:aufgabe10.o
