@@ -20,7 +20,7 @@ using namespace std;
 	return b;
 }*/
 
-int swap_ptr (int* ptr_1, int* ptr_2)
+void swap_ptr (int* ptr_1, int* ptr_2)
 {
 	//int a,x;
 	/*cout << "a = " << a << endl;
@@ -34,13 +34,13 @@ int swap_ptr (int* ptr_1, int* ptr_2)
 	/*ptr_1 = &b;
 	ptr_2 = &c;*/
 	/*cout << "Wert von ptr_1 = " << (*ptr_1) << endl;
-	cout << "prt_1 = " << ptr_1 << endl;
+	cout << "ptr_1 = " << ptr_1 << endl;
 	cout << "Wert von ptr_2 = " << (*ptr_2) << endl;
-	cout << "prt_2 = " << ptr_2 << endl;*/
+	cout << "ptr_2 = " << ptr_2 << endl;*/
 	int temp = *ptr_1;
 	cout << "Wert von temp: " << temp << endl;
 	cout << "Adresse von temp: " << &temp << endl;
 	*ptr_1 = *ptr_2; //über das * kann man den Pointer derefenzieren und auf den eigentlichen Wert auf den der Pointer zeigt zugreifen
 	*ptr_2 = temp;
-	return *ptr_1;
+	//return *ptr_1;
 }

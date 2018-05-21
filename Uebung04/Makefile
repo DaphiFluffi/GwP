@@ -3,7 +3,6 @@ CC = c++ #Compiler
 CFLAGS = -Wall #Optionen
 
 all: aufgabe10 aufgabe11 #Target: all
-     
 
 aufgabe11: aufgabe11.cpp #Target: aufgabe11
 	$(CC) $(CFLAGS) -o aufgabe11 aufgabe11.cpp
