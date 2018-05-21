@@ -6,25 +6,32 @@ using namespace std;
 
 int main ()
 {
-	int a,x;
+	int zahl1, zahl2;
 	cout << "1.Zahl: ";
-	cin >> a;
+	cin >> zahl1;
 	cout << "2.Zahl: ";
-	cin >> x;
-	int& b=a;
-	int& c=x;
-	//cout << "b: " << b << " c: " << c << endl;
-	int* ptr_1 = &b;
-	int* ptr_2 = &c;
-	cout << "Adresse ptr_1 vorher: " << ptr_1 << endl;
-	cout << "Wert ptr_1 vorher: " << (*ptr_1) << endl;	
-	cout << "Adresse ptr_2 vorher: " << ptr_2 << endl;
-	cout << "Wert ptr_2 vorher: " << (*ptr_2) << endl;
+	cin >> zahl2;
+	
+	cout << "Reference-Swapper: " << endl;
+	int& ref_zahl1 = zahl1;
+	int& ref_zahl2 = zahl2; // c=ref_zahl2, b=ref_zahl1
+	cout << swap_ref(ref_zahl1, ref_zahl2) << endl;
+	//cout << "ref_zahl1: " << ref_zahl1 << " ref_zahl2: " << ref_zahl2 << endl;
+	cout << "Wert von ref_zahl1 danach= " << ref_zahl1 << endl;
+	cout << "Wert von ref_zahl2 danach= " << ref_zahl2 << endl;
 
-	cout << swap_ptr(ptr_1,ptr_2) << endl;	
-	cout << "Adresse ptr_1 danach: " << ptr_1 << endl;
-	cout << "Wert ptr_1 danach: " << *ptr_1 << endl;
-	cout << "Adresse ptr_2 danach: " << ptr_2 << endl;
-	cout << "Wert ptr_2 danach: " << *ptr_2 << endl;
-	/*cout << swap_ref(b,c) << endl;*/
+	cout << "Pointer-Swapper: " << endl;
+	cout << swap_ref(ref_zahl2, ref_zahl1) << endl;
+	int* ptr_zahl1 = &ref_zahl1;
+	int* ptr_zahl2 = &ref_zahl2;
+	/*cout << "Adresse ptr_zahl1 vorher: " << ptr_zahl1 << endl;
+	cout << "Wert ptr_zahl1 vorher: " << *ptr_zahl1 << endl;	
+	cout << "Adresse ptr_zahl2 vorher: " << ptr_zahl2 << endl;
+	cout << "Wert ptr_zahl2 vorher: " << *ptr_zahl2 << endl;*/
+
+	cout << swap_ptr(ptr_zahl1, ptr_zahl2) << endl;	
+	//cout << "Adresse ptr_zahl1 danach: " << ptr_zahl1 << endl;
+	cout << "Wert ptr_zahl1 danach: " << *ptr_zahl1 << endl;
+	//cout << "Adresse ptr_zahl2 danach: " << ptr_zahl2 << endl;
+	cout << "Wert ptr_zahl2 danach: " << *ptr_zahl2 << endl;
 }

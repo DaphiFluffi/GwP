@@ -20,6 +20,5 @@ int main()
         cout << i << "\t";
         cout << polynom(i,6,-1,-1,2,1,-1) << endl;  // viele lokale Maxima und f(2) rund 0
     }    
-//return 0;
 }
 
