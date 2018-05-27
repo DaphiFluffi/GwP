@@ -26,6 +26,6 @@ int main()
     for (float i = -2;i <= 2;i += 0.01){	 
         cout << i << "\t";
         cout << polynom(i,5,1,1,-2,-1,1) << endl;  
-    }    
+    }  
 }
 
