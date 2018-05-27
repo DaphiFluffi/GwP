@@ -12,7 +12,6 @@ string bitmuster(char zeichen)
 		a = i & int(zeichen); 	// darf nicht in der if bedingung ausgeführt werden
 		if(a == 0){
 			muster = "0" + muster;
-;
 		}else{
 			muster = "1" + muster;
 		}

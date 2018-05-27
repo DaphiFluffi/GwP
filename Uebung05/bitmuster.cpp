@@ -5,10 +5,16 @@ using namespace std;
 
 string bitmuster(char zeichen)
 {
-	string muster = "abc";
+	string muster;
 	
-	cout << char(zeichen) << endl;
-	cout << zeichen;
-	
+	for( int i = 1; i <= 128; i = i * 2){ 	// zaehlt die Bitstellen hoch 00000001 = 1, 00000010 = 2, ...
+		int a;	// Speicherstelle fuer das ergebnis vom bit vergleich
+		a = i & int(zeichen); 	// darf nicht in der if bedingung ausgeführt werden
+		if(a == 0){
+			muster = "0" + muster;
+		}else{
+			muster = "1" + muster;
+		}
+	}
 	return muster;
 }

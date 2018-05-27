@@ -11,7 +11,7 @@ aufgabe14: aufgabe14.cpp #Target: aufgabe14
 	$(CC) $(CFLAGS) -o aufgabe14 aufgabe14.cpp
 	
 aufgabe12: aufgabe12.o bitmuster.o #Target: aufgabe12
-	$(CC) -o aufgabe12 aufgabe12.o bitmuster.o
+	$(CC) $(CFLAGS) -o aufgabe12 aufgabe12.o bitmuster.o
 	
 aufgabe12.o: aufgabe12.cpp bitmuster.hpp #Target:aufgabe12.o
 	$(CC) $(CFLAGS) -c aufgabe12.cpp
