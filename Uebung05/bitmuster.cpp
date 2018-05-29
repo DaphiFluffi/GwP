@@ -1,5 +1,6 @@
 #include <iostream>
-//#include <string>
+#include <string>
+#include "bitmuster.hpp"
 
 using namespace std;
 

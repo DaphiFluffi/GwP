@@ -13,7 +13,7 @@ aufgabe14: aufgabe14.cpp
 aufgabe12: aufgabe12.o bitmuster.o 
 	$(CC) $(CFLAGS) -o aufgabe12 aufgabe12.o bitmuster.o
 	
-aufgabe12.o: aufgabe12.cpp bitmuster.hpp 
+aufgabe12.o: aufgabe12.cpp 
 	$(CC) $(CFLAGS) -c aufgabe12.cpp
 
 bitmuster.o: bitmuster.cpp  
