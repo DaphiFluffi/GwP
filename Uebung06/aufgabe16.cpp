@@ -3,7 +3,8 @@
 #include <string>
 
 using namespace std;
-
+//Fragen: kann man statt if(!datei) auch irgendwie argc verwenden?
+// Wie macht man die dynamische speicherverwaltung, delete[] laueft nicht?
 int main (int argc, char** argv)
 {
 	cout << "Datei: "; // Einlesen des Dateinamens vom User ueber argv[0], weil dort der Dateiname standarsmassig gespeichert wird
@@ -22,7 +23,7 @@ int main (int argc, char** argv)
 	string zeile; //string- Variable, die in der getline()-Funktion verwendet wird, um die Datei Zeilenweise auszulesen
 	while (getline(datei, zeile)) //Ausfuehren der getline()-Funktion 
 	{
-		//cout << "line: " << line << '\n';
+		//cout << "zeile: " << zeile << '\n';
 		double wert; //double-Variable wert, in der die als strings in der Variable zeile gespeicherten ausgelesenen Zahlenwerte, als doubles gespeichert werden sollen.
 		wert = atof(zeile.c_str()); // atof ist ein Befehl mit dem man Strings in doubles umwandeln kann. Als Argument nimmt atof nur const char*. "zeile" ist jedoch eine string-Variable, sodass man diese erstmal durch c_str() umwandeln muss.
 		//cout << "wert: " << wert << endl;
