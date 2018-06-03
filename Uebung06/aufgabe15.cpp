@@ -10,8 +10,8 @@ int main() {
 	Vektor b (1,2,3);
 	Vektor c (-1,2,-2);
 	Vektor d (1,0,0);
-
-	/*cout << "Vektor a: " << a << endl;
+	
+	cout << "Vektor a: " << a << endl;
 	cout << "Vektor b: " << b << endl;
 	cout << "Vektor c: " << c << endl;
 	cout << "Vektor d: " << d << endl;
@@ -34,5 +34,5 @@ int main() {
 
 	// Spatprodukt
 	cout << "(a x b) * c = " << spat(a,b,c) << " = 0" << endl;
-	cout << "(b x c) * d = " << spat(b,c,d) << " = -10" << endl;*/
+	cout << "(b x c) * d = " << spat(b,c,d) << " = -10" << endl;
 }
