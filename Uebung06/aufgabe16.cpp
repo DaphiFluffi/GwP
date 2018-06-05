@@ -19,27 +19,38 @@ int main (int argc, char** argv)
 		return 1; //... und das Programm beendet. Mit return 1 wird signalisiert, dass beim Ausfuehren ein Fehler unterlaufen ist.
 	}
 	
-	int i = 0; // Zaehlervariable fuer die while-Schleife
+	int i = 0; // Zaehlervariable fuer die while-Schleifen
 	string zeile; //string- Variable, die in der getline()-Funktion verwendet wird, um die Datei Zeilenweise auszulesen
 //	double* array = 0;
 //	array = new double[i];
 	while (getline(datei, zeile)) //Ausfuehren der getline()-Funktion 
 	{
+		i++;
+		//cout << "i:" << i << endl;
+	}
+	cout << "i:" << i << endl;
+	double* array = new double[i]; 
+	datei.close();
+	datei.open(argv[0], ios::in);
+	while (getline(datei, zeile)) //Ausfuehren der getline()-Funktion 
+	{
+		cout << "zeile: " << zeile << '\n';
 		//cout << "zeile: " << zeile << '\n';
 		double wert; //double-Variable wert, in der die als strings in der Variable zeile gespeicherten ausgelesenen Zahlenwerte, als doubles gespeichert werden sollen.
 		wert = atof(zeile.c_str()); // atof ist ein Befehl mit dem man Strings in doubles umwandeln kann. Als Argument nimmt atof nur const char*. "zeile" ist jedoch eine string-Variable, sodass man diese erstmal durch c_str() umwandeln muss.
 		//cout << "wert: " << wert << endl;
-		double* array = new double[i]; //Erstellen eines double* arrays mit dem new[]-Operator fuer dynamische Speicherverwaltung.
+//		double* array = new double[i]; //Erstellen eines double* arrays mit dem new[]-Operator fuer dynamische Speicherverwaltung.
 		array[i] = wert; // Befuellen des arrays an der i-ten Stelle mit den Werten aus der Datei
 		//cout << "array[" << i <<"]: " << array[i] << endl;
 		cout <<  array[i] << endl;
 		//cout << "i:" << i << endl;
-		i++; 
+//		i++; 
 		//delete[] array;
+		//cout << "array nach delete: " << array[i] << endl;
 	}
 	//datei.close(); //Schliessen der Datei
-	//delete[] array;
-	//cout << "array nach delete: " << array << endl;
+	delete[] array;
+	cout << "array nach delete: " << array << endl;
 	return 0;
 }
 
