@@ -59,8 +59,7 @@ double spat(Vektor a, Vektor b, Vektor c)
  * Da der << Operator an das ostream-Modul gebunden ist, muss dieses mit in die 
  * Funktionsdefinition eingebunden werden. Deshalb ist der Rueckgabewert der Funktion
  * eine Reference an die cout Klasse. Von der Funktion wird  der momentane Stand des 
- * cout-Operators uebernommen, mit angegebenen Vektor 
- * ergaenzt und als Ganzes zurueckgegeben.
+ * cout-Operators uebernommen, mit dem Vektor ergaenzt und als Ganzes zurueckgegeben.
 */
 ostream& operator << (ostream& Stream, Vektor const& a)
 {
