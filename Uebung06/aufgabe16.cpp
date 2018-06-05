@@ -21,6 +21,8 @@ int main (int argc, char** argv)
 	
 	int i = 0; // Zaehlervariable fuer die while-Schleife
 	string zeile; //string- Variable, die in der getline()-Funktion verwendet wird, um die Datei Zeilenweise auszulesen
+//	double* array = 0;
+//	array = new double[i];
 	while (getline(datei, zeile)) //Ausfuehren der getline()-Funktion 
 	{
 		//cout << "zeile: " << zeile << '\n';
@@ -35,7 +37,7 @@ int main (int argc, char** argv)
 		i++; 
 		//delete[] array;
 	}
-	datei.close(); //Schliessen der Datei
+	//datei.close(); //Schliessen der Datei
 	//delete[] array;
 	//cout << "array nach delete: " << array << endl;
 	return 0;
