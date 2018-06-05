@@ -12,7 +12,7 @@ Vektor::Vektor(double x_, double y_, double z_)
 	z = z_;
 }
 
-/*Definition der Funktion Betrag aus der Klasse Vektor. Die Funktion gint den Betrag eines Vektors 
+/*Definition der Funktion Betrag aus der Klasse Vektor. Die Funktion gibt den Betrag eines Vektors 
  * in Form eines Skalars zurueck.*/
 double Vektor::betrag ()
 {
@@ -48,8 +48,8 @@ double skalar(Vektor a, Vektor b)
 	return a.x * b.x + a.y * b.y + a.z * b.z ;
 }
 
-/*Funktion spat nimmt 3 Vektoren entgegen und gibt deren Spatprodukt zurück. 
- * Dabei wird an die Funktion skalar das Kreuzprodukt von a und b und c einzeln uebergeben.*/
+/*Funktion spat nimmt 3 Vektoren entgegen und gibt deren Spatprodukt zurueck. 
+ * Dabei wird das Kreuzprodukt von a und b gebildet und mit c skalarmultipliziert.*/
 double spat(Vektor a, Vektor b, Vektor c)
 {
 	return skalar( (a * b), c);
@@ -59,7 +59,7 @@ double spat(Vektor a, Vektor b, Vektor c)
  * Da der << Operator an das ostream-Modul gebunden ist, muss dieses mit in die 
  * Funktionsdefinition eingebunden werden. Deshalb ist der Rueckgabewert der Funktion
  * eine Reference an die cout Klasse. Von der Funktion wird  der momentane Stand des 
- * cout-Operators uebernommen, mit dem neuen string des angegebenen Vektors 
+ * cout-Operators uebernommen, mit angegebenen Vektor 
  * ergaenzt und als Ganzes zurueckgegeben.
 */
 ostream& operator << (ostream& Stream, Vektor const& a)
