@@ -3,8 +3,7 @@
 #include <string>
 
 using namespace std;
-//Fragen: kann man statt if(!datei) auch irgendwie argc verwenden?
-// Wie macht man die dynamische speicherverwaltung, delete[] laueft nicht?
+
 int main (int argc, char** argv)
 {
 	cout << "Datei: "; // Einlesen des Dateinamens vom User ueber argv[0], weil dort der Dateiname standarsmassig gespeichert wird
@@ -21,49 +20,21 @@ int main (int argc, char** argv)
 	
 	int i = 0; // Zaehlervariable fuer die while-Schleifen
 	string zeile; //string- Variable, die in der getline()-Funktion verwendet wird, um die Datei Zeilenweise auszulesen
-//	double* array = 0;
-//	array = new double[i];
-	while (getline(datei, zeile)) //Ausfuehren der getline()-Funktion 
+	while (getline(datei, zeile)) //erste while-Schleife, die die Anzahl der Zeilen in der Datei durch Erhoehen der Zahlervariable auszaehlt
 	{
 		i++;
-		//cout << "i:" << i << endl;
 	}
-	cout << "i:" << i << endl;
-	double* array = new double[i]; 
-	datei.close();
-	datei.open(argv[0], ios::in);
-	while (getline(datei, zeile)) //Ausfuehren der getline()-Funktion 
+	
+	double* darray = new double[i]; //Erstellen eines double-Arrays "darray" mit dem new[]-Operator für die dynamische Speicherverwaltung
+	datei.close(); //Schliessen der Datei
+	datei.open(argv[0], ios::in); //Erneutes Oeffnen der Datei, da durch den getline()-Befehl in der ersten while-Schleife der Pointer am Ende der Datei steht und wir die Datei vom Anfang wieder einlesen moechten
+	while (getline(datei, zeile))
 	{
-		cout << "zeile: " << zeile << '\n';
-		//cout << "zeile: " << zeile << '\n';
-		double wert; //double-Variable wert, in der die als strings in der Variable zeile gespeicherten ausgelesenen Zahlenwerte, als doubles gespeichert werden sollen.
-		wert = atof(zeile.c_str()); // atof ist ein Befehl mit dem man Strings in doubles umwandeln kann. Als Argument nimmt atof nur const char*. "zeile" ist jedoch eine string-Variable, sodass man diese erstmal durch c_str() umwandeln muss.
-		//cout << "wert: " << wert << endl;
-//		double* array = new double[i]; //Erstellen eines double* arrays mit dem new[]-Operator fuer dynamische Speicherverwaltung.
-		array[i] = wert; // Befuellen des arrays an der i-ten Stelle mit den Werten aus der Datei
-		//cout << "array[" << i <<"]: " << array[i] << endl;
-		cout <<  array[i] << endl;
-		//cout << "i:" << i << endl;
-//		i++; 
-		//delete[] array;
-		//cout << "array nach delete: " << array[i] << endl;
+		double wert; //double-Variable wert, in der die als strings in der Variable zeile gespeicherten ausgelesenen Zahlenwerte, als doubles gespeichert werden sollen
+		wert = atof(zeile.c_str()); // "atof" ist ein Befehl mit dem man Strings in doubles umwandeln kann. Als Argument nimmt atof nur const char*. "zeile" ist jedoch eine string-Variable, sodass man diese erstmal durch c_str() umwandeln muss.
+		darray[i] = wert; // Nacheinander Befuellen der i Stellen in darray mit den Werten aus der eingelesenen Datei
+		cout <<  darray[i] << endl;
 	}
-	//datei.close(); //Schliessen der Datei
-	delete[] array;
-	cout << "array nach delete: " << array << endl;
+	delete[] darray; //Freigeben des fuer das array beanspruchten Speicherplatzes nach Ende des Programms
 	return 0;
 }
-
-
-/*int main (int argc, char** argv)
-{
-	// Argumentauswertung
-	ofstream datei;
-	datei.open ("beispiel.txt");
-	datei << "Dieser Satz kein Verb." << endl;
-	datei.close();
-	return 0;
-}
-//ofstream datei ("data.bin", ios::out | ios::app | ios::binary);
-//cout << argv[0] << endl; //Ausgabe des Dateinamen !
-*/
