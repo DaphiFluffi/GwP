@@ -10,4 +10,4 @@ int main (){
 	cout << "jei";
 }
 
-//Kompilierbefehl: c++ -Wall .o aufgabe17 aufgabe17.cpp Zufallsgenerator.cpp
+//Kompilierbefehl: c++ -Wall -o aufgabe17 aufgabe17.cpp Zufallsgenerator.cpp

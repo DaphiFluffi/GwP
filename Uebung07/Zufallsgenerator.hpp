@@ -6,12 +6,12 @@ using namespace std;
 #ifndef ZUFALLSGENERATOR_HPP
 #define ZUFALLSGENERATOR_HPP 1
 
-class LCG
+class MLCG
 {
 	private:
 	int a, c, m, x_i; //Klassenvariablen fuer x, y, z 
 	public:
-	LCG (int a_= 0, int c_=0, int m_=0, int x_i = 0); //Konstruktordeklaration. Da die Klasse aus Vektor.cpp ausgelagert wurde muessen die default-Werte hier eingetragen werden
+	MLCG (int a_= 0, int c_=0, int m_=0, int x_i = 0); //Konstruktordeklaration. Da die Klasse aus Vektor.cpp ausgelagert wurde muessen die default-Werte hier eingetragen werden
 	int getA () {return (a)}; 
 	int getC () {return (c)}; 
 	int getM () {return (m)}; 
