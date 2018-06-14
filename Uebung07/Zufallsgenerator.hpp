@@ -11,14 +11,14 @@ class MLCG
 	private:
 	int a, c, m, x_i; //Klassenvariablen fuer x, y, z 
 	public:
-	MLCG (int a_= 0, int c_= 0, int m_= 0, int x_i = 0);
+	MLCG (int a_= 0, int c_= 0, long long int m_= 0, int x_i = 0);
 	int getA () {return (a);}; 
 	int getC () {return (c);}; 
-	int getM () {return (m);}; 
+	long long int getM () {return (m);}; 
 	int getX() {return (x_i);};
 	void setA (int neua) { a = neua;}
 	void setC (int neuc) { c = neuc;}
-	void setM (int neum) { m = neum;}
+	void setM (long long int neum) { m = neum;}
 	void setX (int neux) { x_i = neux;};
 	long long int XIplus1 ();
 	

@@ -5,7 +5,7 @@
 using namespace std;
 
 /*Definition des Konstruktors aus der Klasse LCG.*/
-MLCG::MLCG (int a_, int c_, int m_, int x_i)
+MLCG::MLCG (int a_, int c_, long long int m_, int x_i)
 {
 	a = a_; //setzt die Klassenattribute mit den Konstruktorparametern gleich
 	c = c_;
@@ -15,6 +15,7 @@ MLCG::MLCG (int a_, int c_, int m_, int x_i)
 
 long long int MLCG::XIplus1 (){
 	a = getA();
+	//cout << "a:" <<a<<endl;
 	c = getC();
 	m = getM();
 	x_i = getX();
