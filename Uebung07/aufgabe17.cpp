@@ -1,10 +1,45 @@
-#include "Zufallsgenerator.hpp"
 #include <iostream>
 #include <cmath>
 #include <fstream>
 #include <string>
 
 using namespace std;
+
+class MLCG
+{
+	private:
+	int a, c, m, x_i; //Klassenvariablen fuer x, y, z 
+	public:
+	MLCG (int, int, long long int, int);
+	int getA () {return (a);}; 
+	int getC () {return (c);}; 
+	long long int getM () {return (m);}; 
+	int getX() {return (x_i);};
+	void setA (int neua) { a = neua;}
+	void setC (int neuc) { c = neuc;}
+	void setM (long long int neum) { m = neum;}
+	void setX (int neux) { x_i = neux;};
+	long long int XIplus1 ();
+	
+}; 
+/*Definition des Konstruktors aus der Klasse LCG.*/
+MLCG::MLCG (int a_ = 0, int c_ = 0, long long int m_ = 0, int x_i = 0)
+{
+	a = a_; //setzt die Klassenattribute mit den Konstruktorparametern gleich
+	c = c_;
+	m = m_;
+	x_i = x_i;
+}
+
+long long int MLCG::XIplus1 (){
+	a = getA();
+	//cout << "a:" <<a<<endl;
+	c = getC();
+	m = getM();
+	x_i = getX();
+	setX((a*x_i + c) % m);
+	return x_i;
+}
 
 int main ()
 {
@@ -26,7 +61,6 @@ int main ()
 	}
 }
 //counter examples for analysis free
-//Kompilierbefehl: c++ -Wall -o aufgabe17 aufgabe17.cpp Zufallsgenerator.cpp
 /*Es faellt auf, dass sobald man mehr als 10 Zhalen ausgibt sich mindestens eine "Zufallszahl"
  *  wiederholt. Oft stimmt die erste mit der elften oder die zweite in der zwoelften ueberein. 
  * In jedem Fall geschieht die Wiederholung so oft wie wir es probiert haben in 10er Schritten.

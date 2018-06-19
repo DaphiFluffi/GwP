@@ -4,7 +4,9 @@
 using namespace std;
 
 
-
+/*Summe bis n: 1.644934057834575
+Summe bis 1: 1.644934066615396
+*/
 int main () {
 	double ergebnis1 = 0 ;
 	double ergebnis2 = 0 ;
