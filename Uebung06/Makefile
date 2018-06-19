@@ -2,31 +2,21 @@ CC = c++ #Compiler
 
 CFLAGS = -Wall #Optionen
 
-all: aufgabe17 aufgabe18 aufgabe19
+all: aufgabe15 aufgabe16
 
-aufgabe19: aufgabe19.o Zufallsgenerator.o
-	$(CC) -o aufgabe19 aufgabe19.o Zufallsgenerator.o
+aufgabe15: aufgabe15.o Vektor.o
+	$(CC) -o aufgabe15 aufgabe15.o Vektor.o
 	
-aufgabe18: aufgabe18.o Zufallsgenerator.o
-	$(CC) $(CFLAGS) -o aufgabe18 aufgabe18.cpp
+aufgabe16: aufgabe16.cpp
+	$(CC) $(CFLAGS) -o aufgabe16 aufgabe16.cpp
 	
-aufgabe17: aufgabe17.o Zufallsgenerator.o
-	$(CC) $(CFLAGS) -o aufgabe17 aufgabe17.cpp
+aufgabe15.o: aufgabe15.cpp Vektor.hpp
+	$(CC) $(CFLAGS) -c aufgabe15.cpp
 	
-aufgabe19.o: aufgabe19.cpp Zufallsgenerator.hpp
-	$(CC) $(CFLAGS) -c aufgabe19.cpp
-	
-aufgabe18.o: aufgabe18.cpp Zufallsgenerator.hpp
-	$(CC) $(CFLAGS) -c aufgabe18.cpp
-	
-aufgabe15.o: aufgabe17.cpp Zufallsgenerator.hpp
-	$(CC) $(CFLAGS) -c aufgabe17.cpp
-	
-Zufallsgenerator.o: Zufallsgenerator.cpp Zufallsgenerator.hpp
-	$(CC) $(CFLAGS) -c Zufallsgenerator.cpp
+Vektor.o: Vektor.cpp Vektor.hpp
+	$(CC) $(CFLAGS) -c Vektor.cpp
 	
 clean: 
-	rm aufgabe17
-	rm aufgabe18
-	rm aufgabe19
+	rm aufgabe15
+	rm aufgabe16
 	rm *.o
