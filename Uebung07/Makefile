@@ -2,13 +2,13 @@ CC = c++ #Compiler
 
 CFLAGS = -Wall #Optionen
 
-all: aufgabe17 aufgabe18 aufgabe19
+all: aufgabe17 aufgabe19 aufgabe18
 
 aufgabe19: aufgabe19.o Zufallsgenerator.o
 	$(CC) -o aufgabe19 aufgabe19.o Zufallsgenerator.o
 	
 aufgabe18: aufgabe18.o Zufallsgenerator.o
-	$(CC) $(CFLAGS) -o aufgabe18 aufgabe18.cpp
+	$(CC) $(CFLAGS) -o aufgabe18 aufgabe18.o Zufallsgenerator.o
 	
 aufgabe17: aufgabe17.cpp
 	$(CC) $(CFLAGS) -o aufgabe17 aufgabe17.cpp
