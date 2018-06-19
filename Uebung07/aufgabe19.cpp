@@ -73,7 +73,7 @@ int main()
 	
 	
 	// Erstellt ein Histogramm aus den gespeicherten Gauss-Werten
-	const int N = 15; 77 Anzahl der Intervalle des Histogramms
+	const int N = 15; // Anzahl der Intervalle des Histogramms
 	double* ausgabe = histogramm(array,LEN,N);
 	
 	// In histogramm.dat speichern
