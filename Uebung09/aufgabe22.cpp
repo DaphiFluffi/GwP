@@ -20,7 +20,7 @@ int main()
 	double z;
 	//erstellen der Zufallszahlen (Objekte)
 	boost::mt19937 Random;
-	// maps die Zufallszahlen auf den gewuenschen Zahlenbereich
+	// passt die Zufallszahlen auf den gewuenschen Zahlenbereich an
 	boost::uniform_real<> xur (1,4);
 	boost::uniform_real<> yur (-2,3);
 	boost::uniform_real<> zur (0,1);
