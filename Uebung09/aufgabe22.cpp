@@ -1,4 +1,3 @@
-#include "Zufallsgenerator.hpp"
 #include <boost/random.hpp>
 #include <iostream>
 #include <cmath>
@@ -21,9 +20,9 @@ int main()
 	double z;
 	//erstellen der Zufallszahlen (Objekte)
 	boost::mt19937 Random;
-	/*randGen xRand(9230597203556921);
-	randGen yRand(16548482629984588);
-	randGen zRand(98754862642184549);*/
+	boost::uniform_real<> x1 (1,4);
+	boost::uniform_real<> y1 (-2,3);
+	boost::uniform_real<> z1 (0,1);
 	
 	//erstellen der Datei, in die die Ergebnisse gespeichert werden.
 	ofstream datei;
@@ -39,21 +38,9 @@ int main()
 		for(bigint i = 0; i <= throws; i++) 
 		{
 			// "wuerfelt" neu 
-			/*xRand.mlcgXorshift(); 
-			yRand.mlcgXorshift();
-			zRand.mlcgXorshift();*/
-			boost::mt19937 Random;
-
-			
-			/*x = xRand.castIn(1,4);  // 1<=x gegeben  und x <= 4 da sonst funktion > 1
-			y = yRand.castIn(-2,3); // -2 <= y <= 3 gegeben
-			z = zRand.castIn(0,1); //  z<=1 da sonst funktion > 1 */
-			boost::uniform_real x (1,4);
-			boost::uniform_real y (-2,3);
-			boost::uniform_real z (0,1);
-			x = Random(x);
-			y= Random(y);
-			z = Random(z);
+			x = x1(Random);
+			y = y1(Random);
+			z = z1(Random);
 			cout << x << "\n" << y << "\n" << z << "\n"<< endl;
 			/* Die Grenzen muessen möglichst eng an dem Koerper liegen, so das der zu pruefende bereich möglichst klein bleibt.
 			 * In einem kleineren Feld liegt die gleiche Anzahl an Punkten naeher aneinander als in einem grossen Feld.
@@ -72,7 +59,7 @@ int main()
 		// Schreib das Ergebnis in die Monte-Carlo-Intigations datei
 		datei <<"volumen: "<< volume << "\t" << "bei " << n << " Wiederholungen" << endl;
 
-		//ergebniss ausgeben
+		//Ergebnis ausgeben
 	}
 	datei.close();
 	cout << "Datei erstellt." << endl;
