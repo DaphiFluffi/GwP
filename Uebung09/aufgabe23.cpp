@@ -1,64 +1,62 @@
+#include "derive.hpp"
 #include <iostream>
 #include <cmath>
 
 using namespace std;
 
-template <class T> class Ableitung
+/*template <class T> 
+class Ableitung
 {
 	private:
 	T func;
 	double h; // private Variablen
 	public:
 	Ableitung(T _func, double _h = 0.1) : func(_func), h(_h) { } //10e-5
-	// Implementierung
-	double operator() (double x, bool b = false)
+	double operator() (double x, int verfahren = 0);
 	{
-		if (b == false){
+		if (verfahren == 0){ //einfache Differentiation
 			volatile double temp = x+h;
 			h = temp - x;
 			return (func(temp) - func(x))/h;
-		}else{
-			volatile double temp = x+h;
-			h = temp - x;
-			volatile double temp2 = x-h;
-			h = temp2 - x; //es liegt hieran 
-			//donothing(temp){};
-			return (func(temp)-func(temp2))/2*h; 
+		}else{ //symmetrische Differentiation
+			volatile double temp = x + h/2;
+			h = (temp - x)*2;
+			volatile double temp2 = x-h/2;
+			x = temp2 + h/2;
+			return (func(temp)-func(temp2))/h; 
 		}
 	}
 	double getH () { return h;}
 	void setH (double neuh) { h = neuh;}
-	/*void waehlen(){
-		cout << "Bitte 0(einfach) oder 1 (symmetrisch) angeben!" <<endl;
-		bool frage;
-		cin >> frage;
-		if (frage == 0){
-			//mach einfache Differentiation
-		}else if (frage == 1){
-			//mach symmetrische Differentiation
-		}
-	}*/
 };
-
-class Test {
+*/
+class Test 
+{
 	double x;
 	public:
-	Test();
-	double operator () (double x) {return x*x;} //gibt mir x^2 zurueck
+	double operator () (double x) 
+	{
+		return x*x*x;
+	}
 };
 
-Test::Test (){
-}
+class Funktion  
+{
+	public:
+		double operator() (double x)
+		{
+			return x*x + 2*x + 3;
+		}
+};
 
 int main() 
 {
-	//Ableitung <double> beispiel(24,12);//omg warum auch immer das funktioniert
 	Test a;
-	a(2.0);
-	cout << a(2.0) << endl;//Test Klasse funktioniert es kommt 4 raus 
 	Ableitung <Test> beispiel(a);
-	cout << "Beispiel abgeleitet: " << beispiel(2.0,false) << endl; //funktioniert warum auch immer nicht
-	cout << "Beispiel abgeleitet: " << beispiel(2.0,true) << endl; //funktioniert warum auch immer nicht
-	//beispiel.waehlen();
-	cout << "Blubb" << endl;
+	cout << "Klasse Test (einfach): " << beispiel(2.0) << endl; 
+	cout << "Klasse Test (symmetrisch): " << beispiel(2.0,12) << endl; 
+	Funktion b;
+	Ableitung<Funktion> funktion(b);
+	cout << "Klasse Funktion (einfach): " << funktion(5.5) << endl;
+	cout << "Klasse Funktion (symmetrisch): " << funktion(5.5,1) << endl;
 }
