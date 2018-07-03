@@ -4,32 +4,7 @@
 
 using namespace std;
 
-/*template <class T> 
-class Ableitung
-{
-	private:
-	T func;
-	double h; // private Variablen
-	public:
-	Ableitung(T _func, double _h = 0.1) : func(_func), h(_h) { } //10e-5
-	double operator() (double x, int verfahren = 0);
-	{
-		if (verfahren == 0){ //einfache Differentiation
-			volatile double temp = x+h;
-			h = temp - x;
-			return (func(temp) - func(x))/h;
-		}else{ //symmetrische Differentiation
-			volatile double temp = x + h/2;
-			h = (temp - x)*2;
-			volatile double temp2 = x-h/2;
-			x = temp2 + h/2;
-			return (func(temp)-func(temp2))/h; 
-		}
-	}
-	double getH () { return h;}
-	void setH (double neuh) { h = neuh;}
-};
-*/
+/*Test-Klasse, die f(x) = x^3 zurueckgibt. Zum Testen des Templates*/
 class Test 
 {
 	double x;
@@ -40,6 +15,7 @@ class Test
 	}
 };
 
+/*Funktion-Klasse. die f(x)= x^2 + 2*x + 3 zurueckgibt. Zum Testen des Templates.*/
 class Funktion  
 {
 	public:
@@ -51,12 +27,13 @@ class Funktion
 
 int main() 
 {
-	Test a;
-	Ableitung <Test> beispiel(a);
-	cout << "Klasse Test (einfach): " << beispiel(2.0) << endl; 
-	cout << "Klasse Test (symmetrisch): " << beispiel(2.0,12) << endl; 
-	Funktion b;
-	Ableitung<Funktion> funktion(b);
-	cout << "Klasse Funktion (einfach): " << funktion(5.5) << endl;
-	cout << "Klasse Funktion (symmetrisch): " << funktion(5.5,1) << endl;
+	Test test; //Erstellen eines Test-Objektes
+	Ableitung <Test> beispiel(test); //Erstellen eines Ableitungsobjekts 
+	cout << "Klasse Test (einfache Differentiation): " << beispiel(2.0) << endl; //Ausgabe der Ableitung des Beispiel-Objekts (berechnet mit der einfachen Differentiation)
+	cout << "Klasse Test (symmetrische Differentiation): " << beispiel(2.0,12) << endl; //Ableitung mit symmetrischer Differentiation
+	//dasselbe Prozedere mit der Funktion-Klasse
+	Funktion func;
+	Ableitung<Funktion> funktion(func);
+	cout << "Klasse Funktion (einfache Differentiation): " << funktion(5.5) << endl;
+	cout << "Klasse Funktion (symmetrische Differentiation): " << funktion(5.5,1) << endl;
 }
