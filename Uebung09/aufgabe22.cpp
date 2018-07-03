@@ -20,16 +20,20 @@ int main()
 	double z;
 	//erstellen der Zufallszahlen (Objekte)
 	boost::mt19937 Random;
-	boost::uniform_real<> x1 (1,4);
-	boost::uniform_real<> y1 (-2,3);
-	boost::uniform_real<> z1 (0,1);
-	
+	// maps die Zufallszahlen auf den gewuenschen Zahlenbereich
+	boost::uniform_real<> xur (1,4);
+	boost::uniform_real<> yur (-2,3);
+	boost::uniform_real<> zur (0,1);
+	/* Die Grenzen muessen möglichst eng an dem Koerper liegen, so das der zu pruefende bereich möglichst klein bleibt.
+	* In einem kleineren Feld liegt die gleiche Anzahl an Punkten naeher aneinander als in einem grossen Feld.
+	* Deshalb wird das Ergebnis schon mit weniger Punkten praeziser.*/
+
 	//erstellen der Datei, in die die Ergebnisse gespeichert werden.
 	ofstream datei;
 	datei.open ("Monte-Carlo-Integration", ios::out);
 	
 	// fuert die Berechnung mehrmals mit n vielen Throws durch
-	for(bigint n = 1000; n <= 10000; n = n*2) 
+	for(bigint n = 1000; n <= 20000000; n = n*2) 
 	{
 		throws = n; // restettet Throws und Hits
 		hits= 0;
@@ -38,14 +42,10 @@ int main()
 		for(bigint i = 0; i <= throws; i++) 
 		{
 			// "wuerfelt" neu 
-			x = x1(Random);
-			y = y1(Random);
-			z = z1(Random);
-			cout << x << "\n" << y << "\n" << z << "\n"<< endl;
-			/* Die Grenzen muessen möglichst eng an dem Koerper liegen, so das der zu pruefende bereich möglichst klein bleibt.
-			 * In einem kleineren Feld liegt die gleiche Anzahl an Punkten naeher aneinander als in einem grossen Feld.
-			 * Deshalb wird das Ergebnis schon mit weniger Punkten praeziser.*/
-			
+			x = xur(Random);
+			y = yur(Random);
+			z = zur(Random);
+						
 			// prueft ob der Punkt im Koerper liegt
 			//result = pow(z,2) + pow(  ( sqrt( pow(x,2)+pow(y,2) ) - 3) , 2);
 			result = z*z + pow(  (sqrt( x*x+y*y )-3) , 2);
@@ -54,7 +54,7 @@ int main()
 		}
 		
 		double volume;
-		volume = (15.0)* hits / throws; // Volumen des Zielbereichs/trefferverhaelniss
+		volume = (15.0)* hits / throws; //Volumen = Volumen des Zielbereichs * trefferverhaelniss
 		
 		// Schreib das Ergebnis in die Monte-Carlo-Intigations datei
 		datei <<"volumen: "<< volume << "\t" << "bei " << n << " Wiederholungen" << endl;
