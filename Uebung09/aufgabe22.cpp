@@ -1,4 +1,5 @@
 #include "Zufallsgenerator.hpp"
+#include <boost/random.hpp>
 #include <iostream>
 #include <cmath>
 #include <fstream>
