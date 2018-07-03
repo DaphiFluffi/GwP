@@ -26,7 +26,7 @@ int main()
 	
 	//erstellen der Datei, in die die Ergebnisse gespeichert werden.
 	ofstream datei;
-	datei.open ("Monte-Carlo-Intigration", ios::out);
+	datei.open ("Monte-Carlo-Integration", ios::out);
 	
 	// fuert die Berechnung mehrmals mit n vielen Throws durch
 	for(bigint n = 1000; n <= 10000; n = n*2) 
