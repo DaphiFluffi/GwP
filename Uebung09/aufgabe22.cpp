@@ -20,16 +20,17 @@ int main()
 	double y;
 	double z;
 	//erstellen der Zufallszahlen (Objekte)
-	randGen xRand(9230597203556921);
+	boost::mt19937 Random;
+	/*randGen xRand(9230597203556921);
 	randGen yRand(16548482629984588);
-	randGen zRand(98754862642184549);
+	randGen zRand(98754862642184549);*/
 	
 	//erstellen der Datei, in die die Ergebnisse gespeichert werden.
 	ofstream datei;
 	datei.open ("Monte-Carlo-Intigration", ios::out);
 	
 	// fuert die Berechnung mehrmals mit n vielen Throws durch
-	for(bigint n = 1000; n <= 200000000; n = n*2) 
+	for(bigint n = 1000; n <= 10000; n = n*2) 
 	{
 		throws = n; // restettet Throws und Hits
 		hits= 0;
@@ -38,14 +39,22 @@ int main()
 		for(bigint i = 0; i <= throws; i++) 
 		{
 			// "wuerfelt" neu 
-			xRand.mlcgXorshift(); 
+			/*xRand.mlcgXorshift(); 
 			yRand.mlcgXorshift();
-			zRand.mlcgXorshift();
-	
-			x = xRand.castIn(1,4);  // 1<=x gegeben  und x <= 4 da sonst funktion > 1
-			y = yRand.castIn(-2,3); // -2 <= y <= 3 gegeben
-			z = zRand.castIn(0,1); //  z<=1 da sonst funktion > 1 
+			zRand.mlcgXorshift();*/
+			boost::mt19937 Random;
+
 			
+			/*x = xRand.castIn(1,4);  // 1<=x gegeben  und x <= 4 da sonst funktion > 1
+			y = yRand.castIn(-2,3); // -2 <= y <= 3 gegeben
+			z = zRand.castIn(0,1); //  z<=1 da sonst funktion > 1 */
+			boost::uniform_real x (1,4);
+			boost::uniform_real y (-2,3);
+			boost::uniform_real z (0,1);
+			x = Random(x);
+			y= Random(y);
+			z = Random(z);
+			cout << x << "\n" << y << "\n" << z << "\n"<< endl;
 			/* Die Grenzen muessen möglichst eng an dem Koerper liegen, so das der zu pruefende bereich möglichst klein bleibt.
 			 * In einem kleineren Feld liegt die gleiche Anzahl an Punkten naeher aneinander als in einem grossen Feld.
 			 * Deshalb wird das Ergebnis schon mit weniger Punkten praeziser.*/
